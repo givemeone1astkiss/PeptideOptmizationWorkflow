@@ -2,12 +2,12 @@ from config.peptide import AMINO_ACIDS, DEFAULT_LEN, AMINO_ACIDS_LONG
 import random
 from rdkit import Chem
 from collections import defaultdict
-from pprint import pprint
+import copy
 
-def gen_random_peptide(length: int) -> str:
-    return ''.join(random.choices(AMINO_ACIDS, k=length))
+def gen_random_peptide(length: int=DEFAULT_LEN) -> list:
+    return random.choices(AMINO_ACIDS, k=length)
 
-def format_sequence(a1, a2, a3):
+def format_sequence(a1, a2, a3) -> str:
     """Format a sequence of three atoms."""
     if f"{a1.GetSymbol()}{a1.GetDegree()}-" > f"{a3.GetSymbol()}{a3.GetDegree()}":
         return (
@@ -61,7 +61,7 @@ def long_to_short(sequence: list) -> list:
 
 def random_mutation(sequence: list) -> list:
     """Randomly mutate one aa in a peptide sequence"""
-    mutated_sequence = sequence.copy()
+    mutated_sequence = copy.deepcopy(sequence)
     mutated_sequence[random.randint(0, len(sequence) - 1)] = random.choice(AMINO_ACIDS)
     return mutated_sequence
 

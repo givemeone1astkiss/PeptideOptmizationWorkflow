@@ -1,5 +1,5 @@
-from utils import exception,peptide
-from utils.score import get_score
+from OpTide.utils import peptide
+from OpTide.utils import get_score
 
 class Node:
     """This class defines the nodes of a tree"""

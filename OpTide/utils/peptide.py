@@ -1,8 +1,9 @@
-from config.peptide import AMINO_ACIDS, DEFAULT_LEN, AMINO_ACIDS_LONG
+from ..config.glob import AMINO_ACIDS, DEFAULT_LEN, AMINO_ACIDS_LONG, LOGP
 import random
 from rdkit import Chem
 from collections import defaultdict
 import copy
+
 
 def gen_random_peptide(length: int=DEFAULT_LEN) -> list:
     return random.choices(AMINO_ACIDS, k=length)
@@ -65,3 +66,8 @@ def random_mutation(sequence: list) -> list:
     mutated_sequence[random.randint(0, len(sequence) - 1)] = random.choice(AMINO_ACIDS)
     return mutated_sequence
 
+def get_logP(peptide: str):
+    pass
+
+def get_ap(peptide: str):
+    pass
